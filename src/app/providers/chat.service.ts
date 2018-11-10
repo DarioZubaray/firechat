@@ -18,8 +18,11 @@ export class ChatService {
     this.mensajesCollection = this.afs.collection<Mensaje>('chats', ref => ref.orderBy('fecha', 'asc').limit(5));
     return this.mensajesCollection.valueChanges()
                .pipe(map( (mensajes: Mensaje[]) => {
-                 console.log(mensajes);
-                 this.chats = mensajes;
+                 this.chats = [];
+                 for( let mensaje of mensajes) {
+                   this.chats.unshift( mensaje );
+                 }
+                 
                }));
   }
 
