@@ -31,6 +31,8 @@ export class ChatService {
   login( proveedor: string) {
     if( proveedor === 'google') {
       this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    } else if( proveedor === 'twitter') {
+      this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
     }
   }
 
