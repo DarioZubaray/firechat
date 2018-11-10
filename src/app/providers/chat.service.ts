@@ -22,4 +22,17 @@ export class ChatService {
                  this.chats = mensajes;
                }));
   }
+
+  agregarMensaje( texto: string ) {
+
+      //TODO falta el UID del usuario
+      let mensaje : Mensaje = {
+        nombre: 'DarioDemo',
+        mensaje: texto,
+        fecha: new Date().getTime()
+      };
+
+      return this.mensajesCollection.add( mensaje );
+
+  }
 }

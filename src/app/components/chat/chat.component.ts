@@ -17,6 +17,15 @@ export class ChatComponent {
 
   enviarMensaje() {
     console.log("Mensaje Enviado: " + this.mensaje);
+
+    if( this.mensaje.length == 0 ) {
+      return;
+    }
+
+    this._cs.agregarMensaje( this.mensaje )
+              .then( () => console.log('Mensaje enviado'))
+              .catch( (err) => console.error('No se pudo enviar: ' + err) );
+
     this.mensaje = null;
   }
 }
